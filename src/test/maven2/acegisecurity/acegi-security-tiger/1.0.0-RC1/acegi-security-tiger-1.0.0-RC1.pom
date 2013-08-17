@@ -1,0 +1,11 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>acegisecurity</groupId>
+  <artifactId>acegi-security-tiger</artifactId>
+  <version>1.0.0-RC1</version>
+  <distributionManagement>
+    <relocation>
+      <groupId>org.acegisecurity</groupId>
+    </relocation>
+  </distributionManagement>
+</project>

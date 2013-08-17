@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><project name="Acegi Security">
+  <bannerLeft>
+    <name>Acegi Security on Sourceforge</name>
+    <src>http://sourceforge.net/sflogo.php?group_id=104215&amp;type=5</src>
+    <href>http://sourceforge.net/projects/acegisecurity</href>
+  </bannerLeft>
+  <bannerRight>
+    <name>Acegi Security</name>
+    <src>images/logo.gif</src>
+    <href>http://acegisecurity.org/</href>
+  </bannerRight>
+  <body>
+    <links>
+      <item name="Acegi Security on Sourceforge" href="http://sourceforge.net/projects/acegisecurity" />
+    </links>
+    <menu name="Overview">
+      <item name="Building with Maven" href="building.html" />
+      <item name="Downloads" href="downloads.html" />
+    </menu>
+    <menu name="Documentation">
+      <item name="Suggested Steps" href="suggested.html" />
+      <item name="Reference Guide" href="reference.html" />
+      <item name="Sample SQL Schema" href="dbinit.txt" />
+      <item name="FAQ" href="faq.html" />
+      <item name="Petclinic Tutorial" href="petclinic-tutorial.html" />
+      <item name="External Web Articles" href="articles.html" />
+      <item name="Products using Acegi" href="powering.html" />
+      <item name="Use without Spring" href="standalone.html" />
+      <item name="Upgrading to 1.0.0" href="upgrade/upgrade-090-100.html" />
+      <item name="Upgrading to 0.9.0" href="upgrade/upgrade-080-090.html" />
+      <item name="Upgrading to 0.8.0" href="upgrade/upgrade-070-080.html" />
+      <item name="Core JavaDocs" href="acegi-security/apidocs/index.html" />
+      <item name="Contacts HTTPS" href="acegi-security-samples/acegi-security-samples-contacts/sslhowto.txt" />
+      <item name="Project Policies" href="policies.html" />
+      <item name="Acegi Security JIRA" href="http://opensource.atlassian.com/projects/spring/secure/BrowseProject.jspa?id=10040" />
+      <item name="Community Forum" href="http://forum.springframework.org/forumdisplay.php?f=33" />
+      <item name="Core Reports" href="acegi-security/project-reports.html" />
+    </menu>
+    <menu name="Links">
+      <item name="Spring Framework" href="http://www.springframework.org/" />
+      <item name="Interface21" href="http://www.interface21.com/" />
+    </menu>
+  </body>
+</project>

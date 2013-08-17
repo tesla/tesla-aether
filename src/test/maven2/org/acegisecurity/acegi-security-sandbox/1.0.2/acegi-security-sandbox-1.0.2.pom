@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.acegisecurity</groupId>
+    <artifactId>acegi-security-parent</artifactId>
+    <version>1.0.2</version>
+  </parent>
+  <artifactId>acegi-security-sandbox</artifactId>
+  <name>Acegi Security System for Spring - Sandbox</name>
+  <packaging>pom</packaging>
+
+  <scm>
+    <connection>scm:svn:https://svn.sourceforge.net/svnroot/acegisecurity/trunk/acegisecurity/sandbox</connection>
+    <developerConnection>scm:svn:https://svn.sourceforge.net/svnroot/acegisecurity/trunk/acegisecurity/sandbox</developerConnection>
+    <url>http://svn.sourceforge.net/viewcvs.cgi/acegisecurity/trunk/acegisecurity/sandbox/</url>
+  </scm>
+
+  <modules>
+    <module>webwork</module>
+    <module>other</module>
+  </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.acegisecurity</groupId>
+      <artifactId>acegi-security</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+  </dependencies>
+</project>

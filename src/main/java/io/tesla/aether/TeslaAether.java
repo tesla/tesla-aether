@@ -21,22 +21,28 @@ public interface TeslaAether {
   static final String REMOTE_REPOSITORY = "tesla.aether:remote.repository";
   static final String REMOTE_REPOSITORY_CONF = "${" + REMOTE_REPOSITORY + "}";
 
+  static final File DEFAULT_LOCAL_REPOSITORY = new File(System.getProperty("user.home"), ".m2/repository"); 
+  static final String DEFAULT_REMOTE_REPOSITORY = "http://repo1.maven.org/maven2";
+  
+  //
   // Model Resolution
-
+  //
   Model resolveModel(File modelFile)
       throws ModelBuildingException;
 
   Model resolveModel(String coordinate)
       throws ModelBuildingException, ArtifactResolutionException;
 
+  //
   // Single Artifact Resolution
-
+  //
   ArtifactResult resolveArtifact(String coordinate) throws ArtifactResolutionException;
 
   ArtifactResult resolveArtifact(Artifact artifact) throws ArtifactResolutionException;
 
+  //
   // Transitive Resolution
-
+  //
   List<Artifact> resolveArtifacts(String coordinate)
       throws DependencyResolutionException;
 
@@ -46,8 +52,9 @@ public interface TeslaAether {
   List<Artifact> resolveArtifacts(DependencyRequest dependencyRequest)
       throws DependencyResolutionException;
 
+  //
   // Workspace Resolution
-
+  //
   List<Artifact> resolveArtifacts(File modelFile)
       throws ModelBuildingException, DependencyResolutionException;
 
@@ -56,6 +63,7 @@ public interface TeslaAether {
 
   ArtifactType getArtifactType(String typeId);
 
-  List<String> findAllVersions(String ga) throws VersionRangeResolutionException;
+  List<String> findAllVersions(String ga) 
+      throws VersionRangeResolutionException;
 
 }

@@ -81,8 +81,15 @@ public class DefaultTeslaAether implements TeslaAether {
     this(new File(System.getProperty("user.home"), ".m2/repository"), "http://repo1.maven.org/maven2/");
   }
 
+  public DefaultTeslaAether(String localRepository, List<String> remoteRepositoryUris) {    
+    List<Repository> repositories = new ArrayList<Repository>();
+    for (String remoteRepositoryUri : remoteRepositoryUris) {
+      repositories.add(new Repository(remoteRepositoryUri));
+    }
+    init(new File(localRepository), repositories);
+  }
+  
   public DefaultTeslaAether(File localRepository, String... remoteRepositoryUris) {
-
     List<Repository> repositories = new ArrayList<Repository>();
     for (String remoteRepositoryUri : remoteRepositoryUris) {
       repositories.add(new Repository(remoteRepositoryUri));

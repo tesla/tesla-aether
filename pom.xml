@@ -22,7 +22,7 @@
 
   <groupId>io.tesla.aether</groupId>
   <artifactId>tesla-aether</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3-SNAPSHOT</version>
 
   <properties>
     <aetherVersion>0.9.0.M2</aetherVersion>

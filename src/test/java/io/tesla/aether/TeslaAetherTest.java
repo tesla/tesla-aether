@@ -15,11 +15,10 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
 import org.eclipse.aether.artifact.Artifact;
 import org.eclipse.aether.artifact.DefaultArtifact;
-import org.eclipse.sisu.containers.InjectedTestCase;
+import org.eclipse.sisu.launch.InjectedTestCase;
 
 //
 // For our tests we have a file based remote repository that has an intact transitive hull where everythign

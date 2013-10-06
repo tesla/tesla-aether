@@ -10,11 +10,11 @@ package io.tesla.aether.internal;
 import io.tesla.aether.Repository;
 import io.tesla.aether.TeslaAether;
 import io.tesla.aether.Workspace;
+import io.tesla.aether.connector.AetherRepositoryConnectorFactory;
 import io.tesla.aether.guice.DefaultModelCache;
 import io.tesla.aether.guice.DefaultModelResolver;
 import io.tesla.aether.guice.RepositorySystemSessionProvider;
 import io.tesla.aether.guice.maven.MavenBehaviourRepositoryProvider;
-import io.tesla.aether.okhttp.OkHttpRepositoryConnectorFactory;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -104,6 +104,21 @@ public class DefaultTeslaAether implements TeslaAether {
     init(localRepository, repositories);
   }
 
+  public DefaultTeslaAether(List<RemoteRepository> remoteRepositories, RepositorySystemSession repositorySystemSession) {
+    DefaultServiceLocator locator = MavenRepositorySystemUtils.newServiceLocator();
+    locator.addService(RepositoryConnectorFactory.class, FileRepositoryConnectorFactory.class);
+    locator.addService(RepositoryConnectorFactory.class, AetherRepositoryConnectorFactory.class);
+    locator.addService(FileProcessor.class, DefaultFileProcessor.class);
+
+    this.system = locator.getService(RepositorySystem.class);
+    this.session = repositorySystemSession;
+    this.modelBuilder = new DefaultModelBuilderFactory().newInstance();
+    this.artifactResolver = locator.getService(ArtifactResolver.class);
+    this.remoteRepositoryManager = locator.getService(RemoteRepositoryManager.class);        
+    this.remoteRepositories = remoteRepositories;
+  }
+
+  
   private void init(File localRepository, List<Repository> repositories) {
     remoteRepositories = new ArrayList<RemoteRepository>();
     for (Repository r : repositories) {
@@ -117,7 +132,7 @@ public class DefaultTeslaAether implements TeslaAether {
 
     DefaultServiceLocator locator = MavenRepositorySystemUtils.newServiceLocator();
     locator.addService(RepositoryConnectorFactory.class, FileRepositoryConnectorFactory.class);
-    locator.addService(RepositoryConnectorFactory.class, OkHttpRepositoryConnectorFactory.class);
+    locator.addService(RepositoryConnectorFactory.class, AetherRepositoryConnectorFactory.class);
     locator.addService(FileProcessor.class, DefaultFileProcessor.class);
 
     this.system = locator.getService(RepositorySystem.class);

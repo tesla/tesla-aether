@@ -11,7 +11,7 @@ import io.tesla.aether.guice.maven.MavenBehaviourModule;
 
 import javax.inject.Inject;
 
-import org.eclipse.sisu.containers.InjectedTestCase;
+import org.eclipse.sisu.launch.InjectedTestCase;
 
 import com.google.inject.Binder;
 

@@ -7,7 +7,7 @@
  */
 package io.tesla.aether.guice;
 
-import io.tesla.aether.okhttp.OkHttpRepositoryConnectorFactory;
+import io.tesla.aether.connector.AetherRepositoryConnectorFactory;
 
 import javax.inject.Provider;
 
@@ -23,7 +23,7 @@ public class RepositorySystemProvider implements Provider<RepositorySystem> {
   public RepositorySystem get() {
     DefaultServiceLocator locator = MavenRepositorySystemUtils.newServiceLocator();
     locator.addService(RepositoryConnectorFactory.class, FileRepositoryConnectorFactory.class);
-    locator.addService(RepositoryConnectorFactory.class, OkHttpRepositoryConnectorFactory.class);
+    locator.addService(RepositoryConnectorFactory.class, AetherRepositoryConnectorFactory.class);
     locator.addService(FileProcessor.class, DefaultFileProcessor.class);
     return locator.getService(RepositorySystem.class);
   }

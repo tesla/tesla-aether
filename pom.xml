@@ -25,7 +25,7 @@
     <aetherVersion>0.9.0.M2</aetherVersion>
     <mavenVersion>3.1.1</mavenVersion>
     <slf4jVersion>1.7.2</slf4jVersion>
-    <okHttpConnectorVersion>0.0.6</okHttpConnectorVersion>
+    <okHttpConnectorVersion>0.0.9</okHttpConnectorVersion>
   </properties>
 
   <licenses>

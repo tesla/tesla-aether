@@ -7,6 +7,7 @@
  */
 package io.tesla.aether.internal;
 
+import com.google.common.collect.Lists;
 import io.tesla.aether.Repository;
 import io.tesla.aether.TeslaAether;
 import io.tesla.aether.Workspace;
@@ -94,6 +95,10 @@ public class DefaultTeslaAether implements TeslaAether {
       repositories.add(new Repository(remoteRepositoryUri));
     }
     init(new File(localRepository), repositories);
+  }
+
+  public DefaultTeslaAether(String localRepository, Repository... remoteRepositories) {
+    init(new File(localRepository), Lists.newArrayList(remoteRepositories));
   }
   
   public DefaultTeslaAether(File localRepository, String... remoteRepositoryUris) {

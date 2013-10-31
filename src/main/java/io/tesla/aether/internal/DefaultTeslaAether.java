@@ -7,6 +7,7 @@
  */
 package io.tesla.aether.internal;
 
+import com.google.common.collect.Lists;
 import io.tesla.aether.Repository;
 import io.tesla.aether.TeslaAether;
 import io.tesla.aether.Workspace;
@@ -17,6 +18,8 @@ import io.tesla.aether.guice.RepositorySystemSessionProvider;
 import io.tesla.aether.guice.maven.MavenBehaviourRepositoryProvider;
 
 import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -91,17 +94,41 @@ public class DefaultTeslaAether implements TeslaAether {
   public DefaultTeslaAether(String localRepository, List<String> remoteRepositoryUris) {    
     List<Repository> repositories = new ArrayList<Repository>();
     for (String remoteRepositoryUri : remoteRepositoryUris) {
-      repositories.add(new Repository(remoteRepositoryUri));
+      repositories.add(authenticatedRepositoryFromUri(remoteRepositoryUri));
     }
     init(new File(localRepository), repositories);
+  }
+
+  public DefaultTeslaAether(String localRepository, Repository... remoteRepositories) {
+    init(new File(localRepository), Lists.newArrayList(remoteRepositories));
   }
   
   public DefaultTeslaAether(File localRepository, String... remoteRepositoryUris) {
     List<Repository> repositories = new ArrayList<Repository>();
     for (String remoteRepositoryUri : remoteRepositoryUris) {
-      repositories.add(new Repository(remoteRepositoryUri));
+      repositories.add(authenticatedRepositoryFromUri(remoteRepositoryUri));
     }
     init(localRepository, repositories);
+  }
+
+  private static Repository authenticatedRepositoryFromUri(String remoteRepositoryUri) {
+    Repository repository = new Repository(remoteRepositoryUri);
+    try {
+      String userInfo = new URI(remoteRepositoryUri).getUserInfo();
+      if(userInfo != null) {
+        String[] auth = userInfo.split(":", 2);
+        if(auth.length == 2) {
+          repository.setUsername(auth[0]);
+          repository.setPassword(auth[1]);
+        } else {
+          // we should log a warning for invalid user info format here
+        }
+      }
+    } catch(URISyntaxException e) {
+      // we should log a warning here instead
+      e.printStackTrace();
+    }
+    return repository;
   }
 
   public DefaultTeslaAether(List<RemoteRepository> remoteRepositories, RepositorySystemSession repositorySystemSession) {
